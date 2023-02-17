@@ -17,10 +17,16 @@ V3.1版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAG
 
 在单元格内输入查询语句
 
+### 查询 Token 余额：
+
 `=getTokenBalance(B2, "ETH", "mainnet")`
 
 `=getTokenBalance(钱包地址，资产合约地址，链的简称)`
 
+### 查询 tx 数量
+
+`=getTxCount(B2, "mainnet")`
+`=getTxCount(address,network)`
 
 ## 使用建议
 
