@@ -1,7 +1,7 @@
-# BalanceChecker Tool V3.0 版
+# BalanceChecker Tool V3.1 版
 
 
-第三版做了大幅更新，具体内容请查看原始推文： [V3.0版多钱包余额查询工具说明](https://twitter.com/gm365/status/1626146212868149248)
+第三版做了大幅更新，具体内容请查看原始推文： [V3.1 版多钱包余额查询工具说明](https://twitter.com/gm365/status/1626146212868149248)
 
 V3.1版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAGegBYChqZ_3xZYGlr8RakAaz51E/edit?usp=sharing)
 
