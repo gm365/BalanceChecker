@@ -3,13 +3,14 @@
 
 第三版做了大幅更新，具体内容请查看原始推文： [V3.0版多钱包余额查询工具说明](https://twitter.com/gm365/status/1626146212868149248)
 
-V3.0版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAGegBYChqZ_3xZYGlr8RakAaz51E/edit?usp=sharing)
+V3.1版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAGegBYChqZ_3xZYGlr8RakAaz51E/edit?usp=sharing)
 
 ## 功能
 
 * 💡 多链原生资产（ETH、BNB等）余额查询
 * 💡 多链 ERC20 资产余额查询
 * 💡 多链 ERC721 资产（NFT）数量查询
+* 💡 新增：查询钱包地址在不同链上的 tx 数量
 
 
 ## 使用方法
