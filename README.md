@@ -7,9 +7,9 @@ V3.0版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAG
 
 ## 功能
 
-💡 多链原生资产（ETH、BNB等）余额查询
-💡 多链 ERC20 资产余额查询
-💡 多链 ERC721 资产（NFT）数量查询
+* 💡 多链原生资产（ETH、BNB等）余额查询
+* 💡 多链 ERC20 资产余额查询
+* 💡 多链 ERC721 资产（NFT）数量查询
 
 
 ## 使用方法
