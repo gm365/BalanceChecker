@@ -1,7 +1,7 @@
-# BalanceChecker Tool V3.1 版
+# BalanceChecker Tool V3.3 版
 
 
-第三版做了大幅更新，具体内容请查看原始推文： [V3.1 版多钱包余额查询工具说明](https://twitter.com/gm365/status/1626146212868149248)
+第三版做了大幅更新，具体内容请查看原始推文： [V3.3 版多钱包余额查询工具说明](https://twitter.com/gm365/status/1626146212868149248)
 
 V3.1版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAGegBYChqZ_3xZYGlr8RakAaz51E/edit?usp=sharing)
 
@@ -11,6 +11,8 @@ V3.1版 [表格模板](https://docs.google.com/spreadsheets/d/1fi9nAjEffAmScBMAG
 * 💡 多链 ERC20 资产余额查询
 * 💡 多链 ERC721 资产（NFT）数量查询
 * 💡 新增：查询钱包地址在不同链上的 tx 数量
+* 💡 新增：查询 zkSync 1.0 余额
+* 💡 新增： 查询 zkSync 1.0 tx 数量
 
 
 ## 使用方法
