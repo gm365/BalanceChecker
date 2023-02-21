@@ -1,6 +1,6 @@
 // 通过 Google Sheets 查询 Token 余额信息，支持主网及其他链的 ERC20 和 ERC721 （NFT）
 // 调用方式：getTokenBalance(walletAddress, contractAddress, network)
-// 2023.02.17 新增功能：查询地址在不同链上的 tx 数量: getTxCount(address,network)
+// 2023.02.21 新增功能：查询 zkSync 1.0 余额及 tx 数量
 // 使用指南：https://twitter.com/gm365/status/1626146212868149248
 // Github 源码：https://github.com/gm365/BalanceChecker
 // Author: @gm365 (https://twitter.com/gm365) & ChatGPT
@@ -132,4 +132,40 @@ function getTxCount(address,network) {
 
   // 返回交易数量
   return transactionCount;
+}
+
+
+// 💡 查询 zkSync 1.0 主网余额
+// 🔧 调用方式 =getZKSyncBalance(B2, "ETH")
+// 支持币种: ETH, USDC, USDT, WBTC, DAI, ZZ 等
+function getZKSyncBalance(address, token) {
+  if (['USDC', 'USDT'].includes(token.toUpperCase())) {
+    decimal = 6;
+  } 
+  else {
+    decimal = 18;
+  }
+
+  var apiUrl = 'https://api.zksync.io/api/v0.2/accounts/' + address;
+  try {
+    var result = JSON.parse(UrlFetchApp.fetch(apiUrl));
+    var balance = result.result.committed.balances[token.toUpperCase()];
+    return balance ? balance / Math.pow(10, decimal) : 0;
+  } catch (e) {
+    console.log('余额获取失败', e);
+    return 0;
+  }
+}
+
+// 获取 zkSync 1.0 tx 数量
+function getZkSyncTxCount(address) {
+  const api_url = "https://api.zksync.io/api/v0.2/accounts/" + address;
+  try {
+    const result = JSON.parse(UrlFetchApp.fetch(api_url));
+    const nonce = result["result"]["committed"]["nonce"];
+    return nonce;
+  } catch (e) {
+    Logger.log(`Nonce 获取失败, ${e}`);
+    return 0;
+  }
 }
