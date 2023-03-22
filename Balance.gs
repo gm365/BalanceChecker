@@ -12,7 +12,8 @@ const RPC_MAP = {
   "op": "https://optimism-mainnet.public.blastapi.io",
   "arb": "https://rpc.ankr.com/arbitrum",
   "polygon": "https://polygon-bor.publicnode.com",
-  "bsc": "https://bscrpc.com"
+  "bsc": "https://bscrpc.com",
+  "goerli": "https://rpc.ankr.com/eth_goerli"
 };
 
 // 查询 ETH 等原生资产余额
@@ -168,4 +169,47 @@ function getZkSyncTxCount(address) {
     Logger.log(`Nonce 获取失败, ${e}`);
     return 0;
   }
+}
+
+// 需要配置 etherscan apikey
+const apiKey = 'XXXXX'
+function getEvmLastTime(address,network) {
+  // 根据 network 获取 RPC
+  let rpcLink = RPC_MAP[network];
+  if (!rpcLink) {
+    return "Error: Invalid Network Name";
+  }
+  const transactionRequest = {
+    jsonrpc: "2.0",
+    method: "eth_blockNumber",
+    "params": [],
+    id: 1
+  };
+  const transactionResponse = UrlFetchApp.fetch(rpcLink, {
+    method: "POST",
+    payload: JSON.stringify(transactionRequest),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+
+  const result = JSON.parse(transactionResponse.getContentText()).result;
+  const lastBlcokNum = parseInt(result, 16);
+
+  //https://docs.etherscan.io/api-endpoints/accounts#get-a-list-of-normal-transactions-by-address  
+  const url =`https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=${lastBlcokNum}&page=1&offset=10&sort=desc&apikey=${apiKey}`
+  const response = JSON.parse(UrlFetchApp.fetch(url).getContentText()).result;
+  if(response.length===0){return ''}
+  const history = response.filter((item)=>item.from.toLowerCase()===address.toLowerCase()).shift()
+  const timeStamp =  parseInt(history.timeStamp)
+  return formatTime(timeStamp*1000);
+}
+function formatTime (timeStamp) {
+  const date = new Date(timeStamp)
+  const yy = date.getFullYear().toString().slice(2)
+  const MM = (date.getMonth() + 1).toString().padStart(2, '0')
+  const dd = date.getDate().toString().padStart(2, '0')
+  const hh = date.getHours().toString().padStart(2, '0')
+  const mm = date.getMinutes().toString().padStart(2, '0')
+  return `${yy}-${MM}-${dd} ${hh}:${mm}`
 }
